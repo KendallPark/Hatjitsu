@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
-          <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="tel" placeholder="enter room name" class="form-control" />
+          <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="text" placeholder="enter room name" class="form-control" />
           <span class="input-group-btn">
             <button ng-click="enterRoom(room)" class="btn btn-default" title="Join an existing planning poker room" ng-disabled="{{disableButtons}}">Join room</button>
           </span>
