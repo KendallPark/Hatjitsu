@@ -8,6 +8,6 @@ module.exports = {
   production: {
     hostname: "klic.herokuapp.com",
     port: 80,
-    packAssets: true
+    packAssets: false
   }
 };
