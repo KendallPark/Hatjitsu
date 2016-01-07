@@ -6,7 +6,7 @@ module.exports = {
     packAssets: false
   },
   production: {
-    hostname: "hat.jit.su",
+    hostname: "klic.herokuapp.com",
     port: 80,
     packAssets: true
   }
