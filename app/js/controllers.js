@@ -291,6 +291,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     socket.on('vote reset', function () {
       // console.log("on vote reset");
       // console.log("emit room info", { roomUrl: $scope.roomId });
+      $scope.voteDist = {};
       this.emit('room info', { roomUrl: $scope.roomId }, function (response) {
         processMessage(response, refreshRoomInfo);
       });
@@ -363,7 +364,6 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   };
 
   $scope.resetVote = function () {
-    $scope.voteDist = {};
     // console.log("emit reset vote", { roomUrl: $scope.roomId });
     socket.emit('reset vote', { roomUrl: $scope.roomId }, function (response) {
       processMessage(response);
