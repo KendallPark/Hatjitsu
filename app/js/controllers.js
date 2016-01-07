@@ -43,6 +43,11 @@ function MainCtrl($scope, $timeout) {
       $scope.errorMessage = null;
     }, 3000);
   });
+  $scope.$on('room name', function (evnt, msg) {
+    $scope.roomName = msg;
+  });
+
+  $scope.roomName = null;
 }
 
 MainCtrl.$inject = ['$scope', '$timeout'];
@@ -69,6 +74,7 @@ function LobbyCtrl($scope, $location, socket) {
       }
     });
   };
+  $scope.$emit('room name', null);
 }
 
 LobbyCtrl.$inject = ['$scope', '$location', 'socket'];
@@ -101,16 +107,25 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     $scope.forceRevealDisable = (!$scope.forcedReveal && ($scope.votes.length < $scope.voterCount || $scope.voterCount === 0)) ? false : true;
 
     if ($scope.votes.length === $scope.voterCount || $scope.forcedReveal) {
-      var uniqVotes = _.chain($scope.votes).pluck('vote').uniq().value().length;
-      if (uniqVotes === 1) {
-        $scope.$emit('unanimous vote');
-      } else if (uniqVotes === $scope.voterCount) {
-        $scope.$emit('problem vote');
-      } else if ($scope.voterCount > 3 && uniqVotes === ($scope.voterCount - 1)) {
-        $scope.$emit('problem vote');
-      } else {
-        $scope.$emit('not unanimous vote');
-      }
+      var groups = _.groupBy($scope.votes, 'vote');
+      var voteDist = {};
+      _.each($scope.cards, function(card) {
+        voteDist[card] = 0;
+        if (groups[card]) {
+          voteDist[card] = groups[card].length/$scope.votes.length * 100;
+        }
+      });
+      $scope.voteDist = voteDist;
+      // var uniqVotes = _.chain($scope.votes).pluck('vote').uniq().value().length;
+      // if (uniqVotes === 1) {
+      //   $scope.$emit('unanimous vote');
+      // } else if (uniqVotes === $scope.voterCount) {
+      //   $scope.$emit('problem vote');
+      // } else if ($scope.voterCount > 3 && uniqVotes === ($scope.voterCount - 1)) {
+      //   $scope.$emit('problem vote');
+      // } else {
+      //   $scope.$emit('not unanimous vote');
+      // }
     } else {
       $scope.$emit('unfinished vote');
     }
@@ -348,6 +363,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   };
 
   $scope.resetVote = function () {
+    $scope.voteDist = {};
     // console.log("emit reset vote", { roomUrl: $scope.roomId });
     socket.emit('reset vote', { roomUrl: $scope.roomId }, function (response) {
       processMessage(response);
@@ -363,6 +379,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   };
 
   $scope.toggleVoter = function () {
+    $scope.voter = !$scope.voter
     // console.log("emit toggle voter", { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId });
     socket.emit('toggle voter', { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId }, function (response) {
       processMessage(response);
@@ -385,6 +402,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   $scope.scrollToSelectedCards = new ScrollIntoView($('#chosenCards'));
 
   $scope.dropDown = new DropDown('#dd');
+  $scope.$emit('room name', $scope.roomId);
 }
 
 RoomCtrl.$inject = ['$scope', '$routeParams', '$timeout', 'socket'];

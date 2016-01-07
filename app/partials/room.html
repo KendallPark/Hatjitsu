@@ -1,95 +1,90 @@
 <div ng-init="configureRoom()">
-  <p class="roomNumber">Room: {{roomId}}</p>
+  <div class="room col-md-6 col-md-offset-3">
+    <section class="cardPanel">
+      <div ng-show="voter">
+        <span><h5>Choose your answer...</h5></span>
+      </div>
+      <div ng-hide="voter">
+        <span><h5>You have chosen not to vote.</h5></span>
+      </div>
 
-  <section class="cardPanel" >
-    <div class="row cardPanel-meta">
-      <div class="span2 subheading">
-        <div ng-show="voter">
-          <span>Choose your answer...</span>
+      <div class="cards{{cardsState}}">
+        <div ng-hide="cards" class="waiting">
+          No cards found
         </div>
-        <div ng-hide="voter">
-          <span>You have chosen not to vote.</span>
+        <div ng-show="cards" ng-repeat="card in cards" ng-click="vote(card)" class="card progress" ng-class="{'card--selected' : card==myVote}" cardvalue>
+          <div class="progress-bar" role="progressbar" style="height: {{voteDist[card]}}%;">
+            {{voteDist[card]}}%
+          </div>
+          {{card}}
         </div>
       </div>
-      <div ng-switch on="showAdmin" class="span2 pullright">
+    </section>
+    <section class="votePanel" >
+      <!-- <span class="sub">Humans: <span class="label">{{humanCount}}</span></span> -->
+
+      <div class="switch">
+        <button class="btn btn-primary" ng-show="voter" ng-disabled="forceRevealDisable" ng-click="toggleVoter()">
+          You are a voter
+        </button>
+        <button class="btn btn-danger" ng-hide="voter" ng-disabled="forceRevealDisable" ng-click="toggleVoter()">
+          You are not a voter
+        </button>
+      </div>
+
+      <div ng-switch on="voter">
+        <div ng-switch-when="false">
+          <p>&nbsp;</p>
+        </div>
+
         <div ng-switch-when="true">
-            <div id="dd" class="dropdown-wrapper btn">
-              <span>Multiple Choice Pack</span>
-              <ul class="dropdown">
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckMC" ng-click="setCardPack('mc')">Multiple Choice</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckGoat" ng-click="setCardPack('goat')">Mountain Goat</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckFib" ng-click="setCardPack('fib')">Fibonacci</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckSeq" ng-click="setCardPack('seq')">Sequential</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckPlay" ng-click="setCardPack('play')">Playing Cards</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckShirt" ng-click="setCardPack('tshirt')">T-Shirt</a></li>
-              </ul>
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="cards{{cardsState}}">
-      <div ng-show="cards" ng-repeat="card in cards" ng-click="vote(card)" class="card" ng-class="{'card--selected' : card==myVote}" cardvalue>
-        {{card}}
-      </div>
-      <div ng-hide="cards" class="waiting">
-        No cards found
-      </div>
-    </div>
-
-  </section>
-
-  <section class="votePanel" >
-    <!-- <span class="sub">Humans: <span class="label">{{humanCount}}</span></span> -->
-
-    <div class="switch">
-      <input type="checkbox" ng-model="voter" ng-disabled="forceRevealDisable" ng-change="toggleVoter()">
-      <label class="btn" data-on="You are a voter" data-off="You are not a voter">I am voting</label>
-    </div>
-
-    <div ng-switch on="voter">
-
-      <div ng-switch-when="false">
-        <p>&nbsp;</p>
-      </div>
-
-      <div ng-switch-when="true">
-        <div ng-switch on="voted">
-          <p ng-switch-when="false">You haven't answered yet</p>
-          <p ng-switch-when="true">Your current answer: <b>{{myVote}}</b></p>
+          <div ng-switch on="voted">
+            <p ng-switch-when="false">You haven't answered yet</p>
+            <p ng-switch-when="true">Your current answer: <b>{{myVote}}</b></p>
+          </div>
         </div>
       </div>
 
-    </div>
+      <div class="cards{{votingState}}" id="chosenCards">
 
-    <div class="cards{{votingState}}" id="chosenCards">
+        <div ng-repeat="vote in votes" ng-click="unvote(vote.sessionId)" class="card card--2-sided vote" selectedvote>
+          <div class="card--side-1">x</div>
+          <div class="card--side-2" cardvalue>{{vote.visibleVote}}</div>
+        </div>
+        <div ng-repeat="i in placeholderVotes" class="card card--placeholder">
+          &nbsp;
+        </div>
 
-      <div ng-repeat="vote in votes" ng-click="unvote(vote.sessionId)" class="card card--2-sided vote" selectedvote>
-        <div class="card--side-1">x</div>
-        <div class="card--side-2" cardvalue>{{vote.visibleVote}}</div>
       </div>
-      <div ng-repeat="i in placeholderVotes" class="card card--placeholder">
-        &nbsp;
-      </div>
 
-    </div>
-
-    <div ng-switch on="showAdmin" >
-
-      <div ng-switch-when="true">
-        <div class="row">
-          <button ng-click="resetVote()" class="span2 btn" title="Start a new vote">
-            <i class="icon icon-refresh"></i> Reset
-          </button>
-          <button ng-click="forceReveal()" class="span2 btn" ng-disabled="forceRevealDisable" title="Force a reveal of all cards if there are some stragglers" >
-            <i class="icon icon-exclamation-sign"></i> Reveal
-          </button>
+      <div ng-switch on="showAdmin">
+        <div ng-switch-when="true" class="row reset-buttons">
+          <div class="col-md-6 col-xs-12">
+            <button ng-click="resetVote()" class="btn btn-default btn-block" title="Start a new vote">
+              <i class="icon icon-refresh"></i> Reset
+            </button>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <button ng-click="forceReveal()" class="btn btn-default btn-block" ng-disabled="forceRevealDisable" title="Force a reveal of all cards if there are some stragglers" >
+              <i class="icon icon-exclamation-sign"></i> Reveal
+            </button>
+          </div>
         </div>
       </div>
 
-    </div>
+      <!-- <div ng-switch on="showAdmin" class="">
+        <div ng-switch-when="true">
+          <select class="form-control" ng-model="cardPack" ng-change="setCardPack(cardPack)">
+            <option class="" value="mc">Multiple Choice</option>
+            <option class="" value="goat">Mountain Goat</option>
+            <option class="" value="fib">Fibonacci</option>
+            <option class="" value="seq">Sequential</option>
+            <option class="" value="play">Playing Cards</option>
+            <option class="" value="tshirt">T-Shirt</option>
+          </select>
+        </div>
+      </div> -->
 
-  </section>
-
+    </section>
+  </div>
 </div>

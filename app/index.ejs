@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/kendall.css">
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/apple-touch-icon-114x114.png" />
@@ -49,19 +50,20 @@
   </script>
 </head>
 <body>
-  <div class="body bg{{bodyState}}" ng-controller="MainCtrl">
-    <div class="container">
-      <header class="header">
-        <a href="/" title="Back to the Lobby">
-          <span class="header__logo{{logoState}}"></span>
-          <h1 class="header__text">Hatjitsu</h1>
-        </a>
-        <noscript>
-          <p>This site is <em>heavily</em> dependant upon JavaScript. If you don't have it enabled, you're not going to have a Good Time.</p>
-        </noscript>
-        <div class="bg-mount"></div>
-      </header>
-
+  <div class="container" ng-controller="MainCtrl">
+    <div class="wrapper">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-6 col-md-offset-3">
+            <a class="navbar-brand" href="/">
+              Klic
+            </a>
+            <p class="navbar-text navbar-right roomName" ng-show="roomName">
+              room: <strong>{{roomName}}</strong>
+            </p>
+          </div>
+        </div>
+      </nav>
       <div class="alert">
         <div class="activity" ng-show="activity">Activity&hellip;</div>
         <div class="socketMessage" class="notification" ui-show="socketMessage" ng-bind="socketMessage"></div>
@@ -71,11 +73,13 @@
 
       <div class="content" ng-view></div>
 
-      <footer class="footer">
-
-        <p>&copy; <a href="http://www.ubxd.com" title="Ruby on Rails, node, and iOS development in Cape Town">UBXD</a> 2012 - 2013; Built by <a href="http://brea.kfa.st" title="nodejs developer in Cape Town">@Jörg</a> &amp; <a href="mailto:richard.archer@ubxd.com" title="Software developer in Cape Town">@Rïch</a>. Hacked by <a href="https://twitter.com/kendallpark">@KendallPark</a>. </p>
-
-      </footer>
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+          <footer class="footer">
+            <p class="navbar-text">&copy; <a href="http://www.ubxd.com" title="Ruby on Rails, node, and iOS development in Cape Town">UBXD</a> 2012 - 2013; Built by <a href="http://brea.kfa.st" title="nodejs developer in Cape Town">@Jörg</a> &amp; <a href="mailto:richard.archer@ubxd.com" title="Software developer in Cape Town">@Rïch</a>.<br/>Hacked by <a href="https://twitter.com/kendallpark">@KendallPark</a>. </p>
+          </footer>
+        </div>
+      </nav>
     </div>
   </div>
 

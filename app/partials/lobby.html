@@ -1,16 +1,25 @@
 <div class="lobby">
-  <h3 class="subheading">Distributed scrum <span>planning poker</span> for estimating agile projects.</h3>
-  <p>First person to <strong>create</strong> the room is the moderator. <strong>Share</strong> the url or room name with other team members to <strong>join</strong> the room.</p>
-
-  <label class="subheading" for="roomfield">Enter room name</label>
-  <div class="row">
-    <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="tel" maxlength="5" placeholder="room name" class="span2 roomUrl" />
-    <button ng-click="enterRoom(room)" class="span2 btn" title="Join an existing planning poker room" ng-disabled="{{disableButtons}}">Join room</button>
+  <div class="lobby col-md-6 col-md-offset-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group">
+          <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="tel" placeholder="enter room name" class="form-control" />
+          <span class="input-group-btn">
+            <button ng-click="enterRoom(room)" class="btn btn-default" title="Join an existing planning poker room" ng-disabled="{{disableButtons}}">Join room</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button ng-click="createRoom()" id="createRoom" class="btn btn-success btn-block" title="Create a new planning poker room" ng-disabled="{{disableButtons}}">Create new room</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>First person to <strong>create</strong> the room is the moderator.</p>
+        <p><strong>Share</strong> the url or room name with other team members to join.
+      </div>
+    </div>
   </div>
-  <label for="createRoom">or</label>
-  <div class="row">
-    <button ng-click="createRoom()" id="createRoom" class="span1 btn" title="Create a new planning poker room" ng-disabled="{{disableButtons}}">Create new room</button>
-  </div>
-
-
 </div>

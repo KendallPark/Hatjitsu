@@ -27,146 +27,6 @@ a:hover,
 a:focus {
   color: rgb(189, 27, 27);
 }
-/*
-  Body
-
-*/
-
-  .body {
-    font: 16px/1.3em 'Helvetica neue', 'Helvetica', 'Arial', sans-serif;
-    background-color: #c5bdab;
-    color: #3d3938;
-    text-shadow: 0px 0px 1px #f4f0e9;
-    min-height: 100%;
-    -webkit-transition: .4s background-color ease;
-       -moz-transition: .4s background-color ease;
-        -ms-transition: .4s background-color ease;
-         -o-transition: .4s background-color ease;
-            transition: .4s background-color ease;
-  }
-  .body--green { background-color: #c5c2ad; }
-  .body--yellow { background-color: #c5bca1; }
-  .body--red { background-color: #d1bdad; }
-
-/*
-  Header
-
-*/
-  .header {
-    position: relative;
-    z-index: 3;
-    padding-top: 8px;
-    padding-bottom: 67px; /* allow for absolutely positioned mountain */
-    zoom: 1;
-    border: 1px solid #B9AAA7;
-    border-width: 0 1px;
-  }
-  .header:before,
-  .header:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-  .header:after {
-    clear: both;
-  }
-  .header a {
-    display: block;
-    overflow: hidden;
-    text-decoration: none;
-    position: relative;
-  }
-  .header__text {
-    line-height: 1;
-    font-size: 3em;
-    margin: 0.5em 0 0 0.5em;
-    position: relative;
-    z-index: 1;
-    text-align: left;
-    height: 56px;
-    width: 155px;
-    text-indent: -1000px;
-    background-image: url(/img/title.png);
-    background-repeat: no-repeat;
-  }
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url(/img/title@2x.png);
-  }
-  @media screen and (min-width: 17em) {
-    .header__text {
-      position: relative;
-      margin-left: 2.5em;
-      right: auto;
-      width: auto;
-    }
-  }
-  .header__text > * {
-    font-size: 1em;
-  }
-  .header__logo {
-    float: left;
-    display: block;
-    margin-left: 1em;
-    width: 6em;
-    height: 6em;
-    border-radius: 50%;
-    background-size: 100%;
-    -webkit-transition: .3s background-color ease;
-       -moz-transition: .3s background-color ease;
-        -ms-transition: .3s background-color ease;
-         -o-transition: .3s background-color ease;
-            transition: .3s background-color ease;
-    z-index: 1;
-    background-color: rgb(226, 222, 212);
-    background-color: rgba(226, 222, 212, 0.8);
-  }
-  .header__logo--green {
-    background-color: rgb(209, 229, 181);
-    background-color: rgba(209, 229, 181, 0.9);
-  }
-  .header__logo--yellow {
-    background-color: rgb(237, 226, 177);
-    background-color: rgba(237, 226, 177, 0.9);
-  }
-  .header__logo--red {
-    background-color: rgb(224, 157, 154);
-    background-color: rgba(224, 157, 154, 0.9);
-  }
-
-  .no-svg .header__logo {
-    position: relative;
-  }
-    .no-svg .header__logo:after {
-      content: " ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: url(/img/sun-mask.png) no-repeat center;
-    }
-
-  .roomNumber {
-    position: absolute;
-    z-index: 4;
-    top: 4.3em;
-    left: 7.7em;
-  }
-
-/*
-
-  Footer
-
-*/
-  .footer {
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-    border: 1px solid #b9aaa7;
-    border-width: 0 1px;
-  }
 
 /*
 
@@ -174,27 +34,27 @@ a:focus {
 
 */
 
-  .lobby {
+  /*.lobby {
     padding: 0 8px;
     position: relative;
-    overflow: hidden;
-    border: 1px solid #b9aaa7;
-    border-width: 0 1px;
-  }
+    overflow: hidden;*/
+    /*border: 1px solid #b9aaa7;*/
+    /*border-width: 0 1px;*/
+  /*}
     .lobby p,
     .lobby .subheading,
     .lobby label {
       padding-left: 0.5em;
       padding-right: 0.5em;
-    }
+    }*/
   .votePanel {
-    overflow: hidden;
+    /*overflow: hidden;
     padding: 1em 8px 0;
-    position: relative;
-    border: 1px solid #b9aaa7;
-    border-width: 0 1px;
+    position: relative;*/
+    /*border: 1px solid #b9aaa7;*/
+    /*border-width: 0 1px;*/
   }
-  .cardPanel {
+  /*.cardPanel {
     padding: 0 8px;
     text-align: center;
     position: relative;
@@ -214,8 +74,8 @@ a:focus {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.1);
-      top: 0;
+      /*background-color: rgba(0,0,0,0.1);*/
+      /*top: 0;
       left: 0;
     }
     .cardPanel p {
@@ -228,13 +88,13 @@ a:focus {
     }
   .cardPanel-meta {
     padding: 1em 0;
-  }
-  .container {
+  }*/
+  /*.container {
     margin: 0 auto;
     max-width: 55em;
     overflow: hidden;
     position: relative;
-  }
+  }*/
 
 /*
 
@@ -300,7 +160,7 @@ a:focus {
     color: #25201c;
     font-size: 1.5em;
     text-align: center;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    /*text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);*/
     line-height: 3em;
     cursor: pointer;
 
@@ -564,7 +424,7 @@ a:focus {
 
 */
 
-  .btn {
+  /*.btn {
     padding: 4px 12px;
     margin: 2px 0 0;
     line-height: 31px;
@@ -610,7 +470,7 @@ a:focus {
   .btn:focus {
     background-position: 0 -40px;
     border-color: transparent;
-  }
+  }*/
   .icon {
     display: inline-block;
     width: 14px;
@@ -628,7 +488,7 @@ a:focus {
     background-position: -90px 0px;
   }
 
-  .switch {
+  /*.switch {
     position: relative;
     margin: 2px 0 0;
     width: 100%;
@@ -714,8 +574,8 @@ a:focus {
     height: auto;
     top: 11px;
     left: 2px;
-  }
-  .roomUrl {
+  }*/
+  /*.roomUrl {
     font-size: 16px;
     line-height: 31px;
     -webkit-box-sizing: border-box;
@@ -728,7 +588,7 @@ a:focus {
        -moz-border-radius: 4px;
             border-radius: 4px;
     border-width: 0px;
-  }
+  }*/
 
 /*
 
@@ -848,7 +708,7 @@ a:focus {
   .appError {
     background-color: rgba(255, 0, 0, 0.3);
     color: rgb(102, 43, 43);
-    text-shadow: none;
+    /*text-shadow: none;*/
   }
 /*
 
