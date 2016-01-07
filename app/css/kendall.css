@@ -39,6 +39,12 @@ footer .navbar-text {
   padding-right: 0;
 }
 
+.cards {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 6em;
+}
+
 .cards div:last-child {
   margin-right: 0 !important;
 }
