@@ -5,7 +5,7 @@
     <div class="row cardPanel-meta">
       <div class="span2 subheading">
         <div ng-show="voter">
-          <span>Choose your estimate...</span>
+          <span>Choose your answer...</span>
         </div>
         <div ng-hide="voter">
           <span>You have chosen not to vote.</span>
@@ -14,8 +14,9 @@
       <div ng-switch on="showAdmin" class="span2 pullright">
         <div ng-switch-when="true">
             <div id="dd" class="dropdown-wrapper btn">
-              <span>Mountain Goat pack</span>
+              <span>Multiple Choice Pack</span>
               <ul class="dropdown">
+                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckMC" ng-click="setCardPack('mc')">Multiple Choice</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckGoat" ng-click="setCardPack('goat')">Mountain Goat</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckFib" ng-click="setCardPack('fib')">Fibonacci</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckSeq" ng-click="setCardPack('seq')">Sequential</a></li>
@@ -55,8 +56,8 @@
 
       <div ng-switch-when="true">
         <div ng-switch on="voted">
-          <p ng-switch-when="false">You haven't estimated yet</p>
-          <p ng-switch-when="true">Your current estimate: <b>{{myVote}}</b></p>
+          <p ng-switch-when="false">You haven't answered yet</p>
+          <p ng-switch-when="true">Your current answer: <b>{{myVote}}</b></p>
         </div>
       </div>
 
