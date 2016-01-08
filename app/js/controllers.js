@@ -175,7 +175,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     }
     processVotes();
     setVotingState();
-    $scope.scrollToSelectedCards.now();
+    // $scope.scrollToSelectedCards.now();
   };
 
   var chooseCardPack = function (val) {
@@ -399,7 +399,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   $scope.votingState = "";
   $scope.forcedReveal = false;
   $scope.forceRevealDisable = true;
-  $scope.scrollToSelectedCards = new ScrollIntoView($('#chosenCards'));
+  // $scope.scrollToSelectedCards = new ScrollIntoView($('#chosenCards'));
 
   $scope.dropDown = new DropDown('#dd');
   $scope.$emit('room name', $scope.roomId);
