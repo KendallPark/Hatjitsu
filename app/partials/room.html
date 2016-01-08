@@ -38,7 +38,7 @@
         </div>
 
         <div ng-switch-when="true">
-          <div ng-switch on="voted">
+          <div ng-switch on="voted" class="answer-status">
             <p ng-switch-when="false">You haven't answered yet</p>
             <p ng-switch-when="true">Your current answer: <b>{{myVote}}</b></p>
           </div>

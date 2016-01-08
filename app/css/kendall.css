@@ -42,13 +42,17 @@ footer .navbar-text {
 }
 
 .cards {
-  overflow-x: auto;
+  /*overflow-x: auto;
   overflow-y: auto;
-  height: 6em;
+  height: 6em;*/
 }
 
 .cards div:last-child {
   margin-right: 0 !important;
+}
+
+.answer-status {
+  margin-top: 10px;
 }
 
 .roomName {
