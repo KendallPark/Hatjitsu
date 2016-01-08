@@ -64,7 +64,7 @@ function LobbyCtrl($scope, $location, socket) {
   $scope.enterRoom = function (room) {
     // console.log('enterRoom: room info');
     $scope.disableButtons = true;
-    socket.emit('room info', { roomUrl: room }, function (response) {
+    socket.emit('room info', { roomUrl: room.toLowerCase() }, function (response) {
       if (response.error) {
         $scope.disableButtons = false;
         $scope.$emit('show error', response.error);
