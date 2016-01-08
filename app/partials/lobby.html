@@ -3,16 +3,16 @@
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
-          <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="text" placeholder="enter room name" class="form-control" />
+          <input ng-model="room" ui-enter="enterRoom(room)" name="roomfield" id="roomfield" type="text" placeholder="enter room name" class="form-control input-lg" />
           <span class="input-group-btn">
-            <button ng-click="enterRoom(room)" class="btn btn-default" title="Join an existing planning poker room" ng-disabled="{{disableButtons}}">Join room</button>
+            <button ng-click="enterRoom(room)" class="btn btn-lg btn-default" title="Join an existing planning poker room" ng-disabled="{{disableButtons}}">Join room</button>
           </span>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <button ng-click="createRoom()" id="createRoom" class="btn btn-success btn-block" title="Create a new planning poker room" ng-disabled="{{disableButtons}}">Create new room</button>
+        <button ng-click="createRoom()" id="createRoom" class="btn btn-lg btn-success btn-block" title="Create a new planning poker room" ng-disabled="{{disableButtons}}">Create new room</button>
       </div>
     </div>
     <div class="row">
