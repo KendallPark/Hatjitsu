@@ -14,7 +14,7 @@
         </div>
         <div ng-show="cards" ng-repeat="card in cards" ng-click="vote(card)" class="card progress" ng-class="{'card--selected' : card==myVote}" cardvalue>
           <div class="progress-bar progress-bar-vertical" role="progressbar" style="height: {{voteDist[card]}}%;">
-            {{voteDist[card] | limitTo:3 }}%
+            {{voteDist[card] | limitTo:4 }}
           </div>
           {{card}}
         </div>
