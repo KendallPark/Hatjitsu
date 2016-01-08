@@ -13,8 +13,8 @@
           No cards found
         </div>
         <div ng-show="cards" ng-repeat="card in cards" ng-click="vote(card)" class="card progress" ng-class="{'card--selected' : card==myVote}" cardvalue>
-          <div class="progress-bar" role="progressbar" style="height: {{voteDist[card]}}%;">
-            {{voteDist[card]}}%
+          <div class="progress-bar progress-bar-vertical" role="progressbar" style="height: {{voteDist[card]}}%;">
+            {{voteDist[card] | limitTo:3 }}%
           </div>
           {{card}}
         </div>
@@ -45,7 +45,13 @@
         </div>
       </div>
 
-      <div class="cards{{votingState}}" id="chosenCards">
+      <div class="voting-bar progress">
+        <div class="progress-bar" role="progressbar" style="width: {{votes.length/voterCount*100}}%;">
+          {{votes.length}} out of {{voterCount}} votes
+        </div>
+      </div>
+
+      <!-- <div class="cards{{votingState}}" id="chosenCards">
 
         <div ng-repeat="vote in votes" ng-click="unvote(vote.sessionId)" class="card card--2-sided vote" selectedvote>
           <div class="card--side-1">x</div>
@@ -55,7 +61,7 @@
           &nbsp;
         </div>
 
-      </div>
+      </div> -->
 
       <div ng-switch on="showAdmin">
         <div ng-switch-when="true" class="row reset-buttons">

@@ -1,4 +1,4 @@
-.progress-bar {
+.progress-bar-vertical {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -8,6 +8,9 @@
   color: inherit;*/
   opacity: 0.8;
   transition: height .6s ease;
+}
+
+.voting-bar .progress-bar {
 }
 
 body { padding-top: 70px; }
