@@ -127,6 +127,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
       //   $scope.$emit('not unanimous vote');
       // }
     } else {
+      var voteDist = {};
       $scope.$emit('unfinished vote');
     }
   };
